@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>BMW X5 — аренда</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #111;
+}
+
+/* ===== ШАПКА ===== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 40px;
+    background: #fff;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    border-bottom: 1px solid #eee;
+
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.35);
+
+    animation: headerSlide 0.7s ease-out;
+}
+
+@keyframes headerSlide {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logo-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #666;
+}
+
+.contact {
+    font-weight: 700;
+    white-space: nowrap;
+    margin-right: 50px;
+}
+
+/* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+.breadcrumbs {
+    max-width: 1000px;
+    margin: 100px auto 10px;
+    padding: 0 20px;
+    font-size: 13px;
+    color: #666;
+}
+
+.breadcrumbs a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+.container {
+    max-width: 1000px;
+    margin: 20px auto 40px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    overflow: hidden;
+}
+
+/* LEFT */
+.left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn {
+    padding: 14px;
+    background: #ff3b3b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: #111;
+}
+
+/* RIGHT */
+.right {
+    width: 50%;
+    padding: 30px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.price {
+    color: #ff3b3b;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.desc {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* ===== ХАРАКТЕРИСТИКИ ===== */
+.specs {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.spec {
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.10);
+    transition: 0.3s;
+}
+
+.spec:hover {
+    box-shadow:
+        0 10px 25px rgba(255, 0, 0, 0.35),
+        0 0 20px rgba(255, 0, 0, 0.25);
+    transform: translateY(-3px);
+}
+
+.spec b {
+    display: block;
+    margin-top: 5px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 360px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.total {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.submit {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #ff3b3b;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== ШАПКА ===== -->
+<div class="header">
+
+    <div class="logo-block">
+        <img class="logo-img" src="https://yt3.googleusercontent.com/ytc/AIdro_kZFjimOltPZa4FQWeSE9qPRj8fcPYVwrV7sya6A8F78w=s900-c-k-c0x00ffffff-no-rj">
+
+        <div>
+            <div class="logo">DriveDonard</div>
+            <div class="subtitle">Прокат автомобилей</div>
+        </div>
+    </div>
+
+    <div class="contact">+7 (914) 455-17-17</div>
+
+</div>
+
+<!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+<div class="breadcrumbs">
+    <a href="index.html">Главная</a>
+    &nbsp;&gt;&nbsp;
+    <a href="#" style="color:red;">BMW X5</a>
+</div>
+
+<div class="container">
+
+    <div class="left">
+        <img src="https://avatars.mds.yandex.net/i?id=64dc33a539facfa19b1781b42d3a6e83396abe94-9181372-images-thumbs&n=13">
+        <button class="btn" onclick="openModal()">Оформить аренду</button>
+    </div>
+
+    <div class="right">
+
+        <h1>BMW X5</h1>
+
+        <div class="price">6000 ₽ / сутки</div>
+
+        <div class="desc">
+            Премиальный немецкий кроссовер для города и трассы.  
+            Отличается динамикой, комфортом и высоким уровнем безопасности.
+        </div>
+
+        <div class="desc">
+            ✔ Полный привод xDrive<br>
+            ✔ Спортивная динамика<br>
+            ✔ Кожаный салон премиум<br>
+            ✔ Адаптивная подвеска
+        </div>
+
+        <div class="specs">
+            <div class="spec">Двигатель<b>3.0 Turbo</b></div>
+            <div class="spec">Привод<b>xDrive 4WD</b></div>
+            <div class="spec">КПП<b>Автомат</b></div>
+            <div class="spec">Год<b>2023</b></div>
+            <div class="spec">Разгон<b>5.5 сек</b></div>
+            <div class="spec">Расход<b>9–11 л</b></div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+
+        <h3>Оформление аренды</h3>
+
+        <input type="text" id="name" placeholder="Имя">
+        <input type="tel" id="phone" placeholder="Телефон">
+        <input type="date" id="birth">
+        <input type="number" id="days" placeholder="Количество дней">
+
+        <div class="total" id="total">Итого: 0 ₽</div>
+        <div class="error" id="error"></div>
+
+        <button class="submit" onclick="send()">Отправить заявку</button>
+
+    </div>
+</div>
+
+<script>
+const price = 6000;
+
+function openModal() {
+    document.getElementById("modal").style.display = "flex";
+}
+
+document.getElementById("days").addEventListener("input", function () {
+    document.getElementById("total").innerText =
+        "Итого: " + (this.value * price || 0) + " ₽";
+});
+
+function isAdult(date) {
+    let b = new Date(date);
+    let t = new Date();
+
+    let age = t.getFullYear() - b.getFullYear();
+    let m = t.getMonth() - b.getMonth();
+
+    if (m < 0 || (m === 0 && t.getDate() < b.getDate())) age--;
+
+    return age >= 18;
+}
+
+function send() {
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let birth = document.getElementById("birth").value;
+    let days = document.getElementById("days").value;
+    let error = document.getElementById("error");
+
+    error.innerText = "";
+
+    if (!name || !phone || !birth || !days) {
+        error.innerText = "Заполните все поля";
+        return;
+    }
+
+    if (!isAdult(birth)) {
+        error.innerText = "Аренда только с 18 лет";
+        return;
+    }
+
+    alert("Заявка отправлена");
+    location.reload();
+}
+</script>
+
+</body>
+</html>

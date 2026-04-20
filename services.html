@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Доп. услуги - DriveDonard</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #111;
+    padding-top: 80px;
+
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(255,0,0,0.12), transparent 40%),
+        radial-gradient(circle at 90% 20%, rgba(0,0,0,0.10), transparent 45%),
+        linear-gradient(135deg, #f7f7f7 0%, #e9e9e9 100%);
+}
+
+/* HEADER (1:1) */
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 12px 40px;
+    background: #fff;
+    color: #000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: headerAppear 0.6s ease forwards;
+}
+
+@keyframes headerAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    transform: skew(-10deg);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: #000;
+}
+
+.subtitle {
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+    font-weight: 500;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: red;
+    transition: 0.3s;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* CONTENT */
+.avatar-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 90px;
+    padding-top: 120px;
+    gap: 30px;
+}
+
+.avatar-section img {
+    width: 243px;
+    height: 243px;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.avatar-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 25px;
+}
+
+.avatar-title {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.avatar-subtitle {
+    font-size: 14px;
+    color: #444;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* 🔥 НИЖНЯЯ ПОЛОСА (ДО САМОГО НИЗА ЭКРАНА) */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100px; /* толще */
+
+    background: #000;
+    border-top: 6px solid red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.bottom-bar button {
+    background: red;
+    border: none;
+    color: #fff;
+
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.bottom-bar button:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+
+::selection {
+    background: red;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: red;
+    color: #fff;
+}
+
+.contact-dropdown {
+    position: relative;
+}
+
+/* анимация появления */
+.contact-dropdown .dropdown-menu {
+    position: absolute;
+    top: 130%;
+    left: 0;
+
+    background: white;
+    min-width: 180px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.95);
+    transition: 0.25s ease;
+}
+
+/* появление */
+.contact-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* кнопки */
+.contact-dropdown .dropdown-menu a {
+    display: block;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+/* hover эффект кнопок */
+.contact-dropdown .dropdown-menu a:hover {
+    background: #f7f7f7;
+    color: red;
+    transform: translateX(5px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo-block">
+        <img class="logo-img" src="https://yt3.googleusercontent.com/ytc/AIdro_kZFjimOltPZa4FQWeSE9qPRj8fcPYVwrV7sya6A8F78w=s900-c-k-c0x00ffffff-no-rj">
+        <div class="logo-text">
+            <div class="logo">DriveDonard</div>
+            <div class="subtitle">Прокат автомобилей</div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Наши автомобили</a>
+        <a href="#">Off-Road услуги</a>
+        <a href="services.html">Доп. услуги</a>
+<div class="dropdown contact-dropdown">
+    <a href="#">Контакты</a>
+
+    <div class="dropdown-menu">
+        <a href="https://vk.com" target="_blank">ВКонтакте</a>
+        <a href="https://t.me" target="_blank">Telegram</a>
+    </div>
+</div>
+    </div>
+
+    <div class="contact">
+        +7 (914) 455-17-17
+    </div>
+</div>
+
+<div class="avatar-section">
+    <img src="https://yt3.googleusercontent.com/ytc/AIdro_kZFjimOltPZa4FQWeSE9qPRj8fcPYVwrV7sya6A8F78w=s900-c-k-c0x00ffffff-no-rj">
+
+    <div class="avatar-text-block">
+        <div class="avatar-title">Дополнительные услуги</div>
+        <div class="avatar-subtitle">
+Условия аренды автомобиля:
+Возраст арендатора – от 27 лет;
+Водительский стаж – от 3 лет;
+Аренда от 3 суток;
+Для оформления договора необходимо предъявить паспорт и водительское удостоверение.
+Трансфер из/в аэропорт.
+Стоимость услуги – 2000 рублей.
+
+Подача автомобиля в удобном для Вас месте за пределами г. Читы.
+Стоимость услуги индивидуальна и зависит от места подачи.
+
+Возврат автомобиля в удобном для Вас месте за пределами г. Читы.
+Стоимость услуги индивидуальна и зависит от места возврата.​​​​​​
+
+Детское кресло, бустер.
+Стоимость услуги – 350 руб./сутки.​​​​​​​
+
+Личный водитель на время эксплуатации автомобиля.
+Стоимость услуги – от 7000 рублей. Оговаривается с каждым клиентом индивидуально.
+
+Если Вы собираетесь в путешествие со своим четвероногим другом, мы предоставим Вам гамак для животных 
+Стоимость услуги – 200 рублей.
+
+Off-road такси
+Стоимость услуги индивидуальна, зависит от дальности, продолжительности и сложности маршрута.
+
+Off-road эвакуация
+Стоимость услуги – от 3000 рублей.
+Стоимость услуги индивидуальна, зависит от дальности, продолжительности и сложности эвакуации.
+        </div>
+    </div>
+</div>
+
+<!-- 🔥 НИЖНЯЯ ПОЛОСА -->
+<div class="bottom-bar">
+    <button>Позвонить</button>
+</div>
+
+</body>
+</html>
